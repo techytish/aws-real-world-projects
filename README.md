@@ -9,13 +9,14 @@ If they have an actual app in the Microsoft Teams store, then why doesn't it wor
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/27959256/222961426-76ddc4b8-a331-496e-b64f-9f5dc82fc590.png">
 
 ## Solution
-Using AWS API Gateway and AWS Lambda, when the check is triggered in Pingdom, it will send the notification to the AWS api endpoint. 
+Using AWS API Gateway and AWS Lambda, when the check is triggered in Pingdom, it will send the notification to the AWS API endpoint. 
 
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/27959256/222961602-6deaa173-2ee5-4e91-a10b-97d6d02697c6.png">
 
-- When a message is sent via HTTP it's identified as a payload. This is received in JSON format.  
-- So the API receives the payload, we specify which data from the payload we're interested in.
-- With the API Gateway set as a trigger to the AWS Lambda, this will have the python script which will send the payload to a Microsoft Teams channel incoming webhook url in a way that Microsoft accepts, a message card.  
+- When a message is sent via `HTTP`, it's identified as a payload. This is received in JSON format.  
+- So the API receives the payload, we specify which data from the payload we're interested in using a mapping template on the `POST `request.
+- The AWS Lambda Function will recieve an invoke response from the API Gateway, this is setup as a trigger
+- The AWS Lambda Function is written in Python, the script defines how to send the payload to a Microsoft Teams channel using an incoming webhook url (in a way that Microsoft accepts), this is known as a message card.  
 
 ## Technologies
 
