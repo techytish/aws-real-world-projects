@@ -1,6 +1,7 @@
 # Intergrate Pingdom & Microsoft Teams
 
 <!-- TOC start -->
+## Table of Contents
   * [Problem ](#problem)
   * [Solution](#solution)
   * [Technologies](#technologies)
@@ -14,7 +15,7 @@
   * [Pingdom Payload](#pingdom-payload)
   * [Microsoft Teams Message Card](#microsoft-teams-message-card)
   * [AWS Lambda Files](#aws-lambda-files)
-- [Implementation](#implementation)
+  * [Implementation](#implementation)
 <!-- TOC end -->
 
 ## Problem 
