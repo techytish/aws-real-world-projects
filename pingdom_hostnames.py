@@ -13,7 +13,7 @@ from regions import aws_regions
 
 # List of Hostnames #1
 list_of_hosts1 = [
-  "www.google.co.uk",
+  "www.google.com/",
   f"test1.{domain1}",  #Test 1 - Domain 1
   f"test2.{domain1}",  #Test 2 - Domain 1
 ]
