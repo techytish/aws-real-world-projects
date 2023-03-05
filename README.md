@@ -6,9 +6,12 @@ The Pingdom app on Microsoft Teams does not work, I contacted Pingdom and they c
 If they have an actual app in the Microsoft Teams store, then why doesn't it work?
 - Well the likely answer is that it needs updating, according to the reviews, the app suddenly stopped working. 
 
-## Implementation Guide
+## Solution
+Using AWS API Gateway and AWS Lambda, when the check is triggered in Pingdom, it will send the notification to the AWS api endpoint. 
 
-Read my article here: :fire: to add
+- When a message is sent via HTTP it's identified as a payload. This is received in JSON format.  
+- So the API receives the payload, we specify which data from the payload we're interested in.
+- With the API Gateway set as a trigger to the AWS Lambda, this will have the python script which will send the payload to a Microsoft Teams channel incoming webhook url in a way that Microsoft accepts, a message card.  
 
 ## Technologies
 - AWS account
@@ -20,17 +23,6 @@ Read my article here: :fire: to add
 - Some understanding of REST APIs as that's where the pingdom alert will go to
 - Request Bin account - to see how a payload is received
 - Postman Account - test HTTP requests
-
-## Solution
-When the check is triggered in Pingdom, it will send the notification to the AWS api endpoint. 
-
-When a message is sent via HTTP it's identified as a payload. This is received in JSON format.  
-
-So the api receives the payload, we specify which data from the payload we're interested in. 
-
-Remember there is a lot of information on a payload, but not all of the fields are relevant
-With the api gateway set as a trigger for the AWS Lambda, 
-this will have the python script send the payload to Microsoft Teams channel incoming webhook url in a way that Microsoft accepts, a message card.  
 
 ## Costing?
 
@@ -84,3 +76,23 @@ Use requestbin, to identify exactly how the payload looks.
 This screenshot shows how the alert will appear in Microsoft Teams 
 
 :fire: to add
+
+## AWS Lambda Files
+
+In this repository you will find 4 files, these are what is required to run the lambda function. 
+
+- 'domains.py': this is a list of domains that we want to use in our hostnames, this is optional
+- 'regions.py': this is a list of AWS and azure regions to use in our hostnames, this is optional
+- 'pingdom_hostnames.py': this is a list of hostnames that we want to check, these should be setup in Pingdom as checks, this is optional
+- 'lambda_handler.py': this is the main part that will look at the HTTP POST request from the API Gateway and send the message to a Microsoft Teams channel. 
+
+# Implementation
+
+This is open-source and you may use my code for your implementation. 
+
+Read my article here: :fire: to add
+
+:fire: If you are using any documentation please credit my repo/article as source. 
+
+
+Thank you!
