@@ -4,8 +4,11 @@
 The Pingdom app on Microsoft Teams does not work, I contacted Pingdom and they confirmed the payload request that is sent to Microsoft Teams is not compatible.
 
 If they have an actual app in the Microsoft Teams store, then why doesn't it work?
+- Well the likely answer is that it needs updating, according to the reviews, the app suddenly stopped working. 
 
-Well the likely answer is that it needs updating, according to the reviews the app stopped working. 
+## Implementation Guide
+
+Read my article here: :fire: to add
 
 ## Technologies
 - AWS account
@@ -34,12 +37,12 @@ this will have the python script send the payload to Microsoft Teams channel inc
 Assuming that the Lambda function runs for a maximum of 50 invocations per day, and each invocation completes within 1 second,
 the total monthly cost for AWS API Gateway and Lambda (EU Ireland region), can be estimated as follows:
 
-### API Gateway:
+### API Gateway
 - Requests: 50 requests/day x 30 days = 1,500 requests/month
 - Data transfer out: Assuming an average payload size of 1KB per request, the total data transfer out per month would be 1.5 MB.
 - Cost = 1,500 requests * £0.0000004/request + 1.5 MB * £0.09/GB = £0.0006 + £0.0001 = £0.0007
 
-### Lambda:
+### Lambda
 - Execution: Assuming an average execution time of 200ms per request, the total compute time per month would be 50 requests * 200ms/request = 10 seconds.
 - Memory: Assuming you use 128MB of memory for your Lambda function.
 - Cost = 10 seconds * 128MB * £0.000000208/GB/second = £0.0000026
@@ -58,7 +61,7 @@ You can access it here: https://calculator.aws/#/
 You can also view the AWS pricing page for a detailed breakdown of pricing for all AWS services. 
 Here's the link: https://aws.amazon.com/pricing/
 
-### Other Tools: 
+### Other Tools
 - Request Bin and Postman is free
 - I assume you already have an Pingdom and Microsoft Teams account. 
 
