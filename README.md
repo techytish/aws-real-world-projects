@@ -32,23 +32,33 @@ this will have the python script send the payload to Microsoft Teams channel inc
 ## Costing?
 
 Assuming that the Lambda function runs for a maximum of 50 invocations per day, and each invocation completes within 1 second,
-the total monthly cost for AWS API Gateway and Lambda (EU Urelabd region), can be estimated as follows:
+the total monthly cost for AWS API Gateway and Lambda (EU Ireland region), can be estimated as follows:
 
-API Gateway:
+### API Gateway:
 - Requests: 50 requests/day x 30 days = 1,500 requests/month
 - Data transfer out: Assuming an average payload size of 1KB per request, the total data transfer out per month would be 1.5 MB.
 - Cost = 1,500 requests * £0.0000004/request + 1.5 MB * £0.09/GB = £0.0006 + £0.0001 = £0.0007
 
-Lambda:
+### Lambda:
 - Execution: Assuming an average execution time of 200ms per request, the total compute time per month would be 50 requests * 200ms/request = 10 seconds.
 - Memory: Assuming you use 128MB of memory for your Lambda function.
 - Cost = 10 seconds * 128MB * £0.000000208/GB/second = £0.0000026
 
 Therefore, the estimated monthly cost for the API Gateway and Lambda usage would be approximately £0.0007 + £0.0000026 = £0.0007026.
 
+Also remember the 50 invocations is when a Pingdom check is activated, so this will be if the state changes, or if a test alert is sent. 
+
 :fire: Please note that these are estimates and actual costs may vary depending on factors such as region the resources are provisioned in, traffic spikes and data transfer.
 
-Other tools: 
+### AWS Caculator
+You can estimate your AWS costs using the AWS Simple Monthly Calculator, which allows you to estimate the monthly costs of running your services based on your usage. 
+You can access it here: https://calculator.aws/#/
+
+### AWS Pricing
+You can also view the AWS pricing page for a detailed breakdown of pricing for all AWS services. 
+Here's the link: https://aws.amazon.com/pricing/
+
+### Other Tools: 
 - Request Bin and Postman is free
 - I assume you already have an Pingdom and Microsoft Teams account. 
 
