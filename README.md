@@ -1,28 +1,35 @@
-# Pingdom to Microsoft Teams - Alert Notifications
+# Intergrate Pingdom & Microsoft Teams
 
 ## Problem 
 The Pingdom app on Microsoft Teams does not work, I contacted Pingdom and they confirmed the payload request that is sent to Microsoft Teams is not compatible.
 
 If they have an actual app in the Microsoft Teams store, then why doesn't it work?
-- Well the likely answer is that it needs updating, according to the reviews, the app suddenly stopped working. 
+- Well the likely answer is that it needs updating, according to the [reviews](https://appsource.microsoft.com/en/product/office/WA104381605?tab=Reviews&exp=ubp8), the app suddenly stopped working. 
+
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/27959256/222961426-76ddc4b8-a331-496e-b64f-9f5dc82fc590.png">
 
 ## Solution
 Using AWS API Gateway and AWS Lambda, when the check is triggered in Pingdom, it will send the notification to the AWS api endpoint. 
+
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/27959256/222961602-6deaa173-2ee5-4e91-a10b-97d6d02697c6.png">
 
 - When a message is sent via HTTP it's identified as a payload. This is received in JSON format.  
 - So the API receives the payload, we specify which data from the payload we're interested in.
 - With the API Gateway set as a trigger to the AWS Lambda, this will have the python script which will send the payload to a Microsoft Teams channel incoming webhook url in a way that Microsoft accepts, a message card.  
 
 ## Technologies
-- AWS account
+
+<img width="840" alt="image" src="https://user-images.githubusercontent.com/27959256/222963437-33f29638-da62-4781-8181-a19def37a469.png">
+
+- [AWS](https://aws.amazon.com/) account
   - permissions to create resources in AWS
   - permissions to access AWS CloudWatch
-- Pingdom account with checks configured, and permissions to add integration webhook urls
-- Microsoft Teams account with permissions to add Incomming Webhook connector and create teams/channels
-- Knowledge of Python as the AWS Lambda is written in python
-- Some understanding of REST APIs as that's where the pingdom alert will go to
-- Request Bin account - to see how a payload is received
-- Postman Account - test HTTP requests
+- [Pingdom](https://www.pingdom.com/) account with checks configured, and permissions to add integration webhook urls
+- [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/log-in) account with permissions to add Incomming Webhook connector and create teams/channels
+- Some understanding of [Python](https://www.python.org/about/gettingstarted/) as the AWS Lambda is written in python
+- Some understanding of [REST APIs](https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f) as the API Gateway and Lambda will be using this to communicate with Microsoft Teams
+- [Postman](https://www.postman.com/) Account - test HTTP requests
+- [Request Bin](https://requestbin.com/) account - to see how a payload is received
 
 ## Costing?
 
@@ -81,10 +88,10 @@ This screenshot shows how the alert will appear in Microsoft Teams
 
 In this repository you will find 4 files, these are what is required to run the lambda function. 
 
-- 'domains.py': this is a list of domains that we want to use in our hostnames, this is optional
-- 'regions.py': this is a list of AWS and azure regions to use in our hostnames, this is optional
-- 'pingdom_hostnames.py': this is a list of hostnames that we want to check, these should be setup in Pingdom as checks, this is optional
-- 'lambda_handler.py': this is the main part that will look at the HTTP POST request from the API Gateway and send the message to a Microsoft Teams channel. 
+- [`domains.py`](https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/pingdom-to-microsoft-teams/domains.py): this is a list of domains that we want to use in our hostnames, this is optional
+- [`regions.py`](https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/pingdom-to-microsoft-teams/regions.py): this is a list of AWS and azure regions to use in our hostnames, this is optional
+- [`pingdom_hostnames.py`](https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/pingdom-to-microsoft-teams/pingdom_hostnames.py): this is a list of hostnames that we want to check, these should be setup in Pingdom as checks, this is optional
+- [`lambda_function.py`](https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/pingdom-to-microsoft-teams/lambda_function.py): this is the main part that will look at the HTTP POST request from the API Gateway and send the message to a Microsoft Teams channel. 
 
 # Implementation
 
