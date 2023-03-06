@@ -93,7 +93,37 @@ This architecture diagram provides a high level overview of how the notification
 
 Example of Pingdom payload 
 
-:fire: to add
+```json
+{
+    "version": 1,
+    "check_id": 10012345,
+    "check_name": "Local Test Check",
+    "check_type": "HTTP",
+    "check_params": {
+      "basic_auth": false,
+      "encryption": true,
+      "full_url": "http://google.com/",
+      "header": "User-Agent:Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)",
+      "hostname": "google.com",
+      "ipv6": false,
+      "port": 80,
+      "responsetime_threshold": 30000,
+      "url": "/check?pingdom",
+      "verify_certificate": true
+    },
+    "tags": [],
+    "importance_level": "HIGH",
+    "custom_message": "",
+    "previous_state": "UP",
+    "current_state": "DOWN",
+    "state_changed_timestamp": 1677792202,
+    "state_changed_utc_time": "2023-03-02T21:23:22",
+    "long_description": "This is a test message triggered by a user in My Pingdom",
+    "description": "test",
+    "first_probe": {},
+    "second_probe": {}
+  }
+```
 
 Use requestbin, to identify exactly how the payload looks. 
 
@@ -101,7 +131,7 @@ Use requestbin, to identify exactly how the payload looks.
 
 This screenshot shows how the alert will appear in Microsoft Teams 
 
-:fire: to add
+![image](https://user-images.githubusercontent.com/27959256/222997613-a7ee4851-cd8f-4eba-a995-75170bb85ce8.png)
 
 ## AWS Lambda Files
 
@@ -116,7 +146,8 @@ In this repository you will find 4 files, these are what is required to run the 
 
 This is open-source and you may use my code for your implementation. 
 
-Read my article here: :fire: to add
+- Read `Part 1/2` article here :arrow_right: https://medium.com/p/d0ef36e3f81c
+- Read `Part 2/2` article here :arrow_right: https://medium.com/@techytish/integrate-pingdom-microsoft-teams-part-2-2-25119873825f
 
 :fire: If you are using any documentation please credit my repo/article as source. 
 
