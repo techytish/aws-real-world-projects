@@ -147,7 +147,7 @@ In this repository you will find 4 files, these are what is required to run the 
 This is open-source and you may use my code for your implementation. 
 
 - Read `Part 1/2` article here :arrow_right: https://medium.com/p/d0ef36e3f81c
-- Read `Part 2/2` article here :arrow_right: https://medium.com/@techytish/integrate-pingdom-microsoft-teams-part-2-2-25119873825f
+- Read `Part 2/2` article here :arrow_right: https://medium.com/p/25119873825f
 
 :fire: If you are using any documentation please credit my repo/article as source. 
 
