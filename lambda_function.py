@@ -42,17 +42,17 @@ def lambda_handler(event, context):
   # Add url for where the documentation is
   alert_document = "https://example.com" #optional
   
-  # Initialise color variable to None
-  colour = None 
-  # Set colour of the message to red if current state is 'DOWN'
-  if current_state == 'DOWN':
-      colour = 'FF0000'  # Red
+ # Initialise color variable to None
+  colour = None
   # Set colour of the message to green if current state is 'UP'
-  elif current_state == 'UP':
+  if current_state == 'UP' and previous_state == 'DOWN':
       colour = '00FF00'  # Green
+  # Set colour of the message to red if current state is 'DOWN'
+  elif current_state == 'DOWN' and previous_state == 'UP':
+      colour = 'FF0000'  # Red
   # Set a default color if none of the conditions are met
   else:
-      colour = '0000FF' # Blue
+      colour = '0000FF'  # Blue
       
   # Construct the Microsoft Teams message payload
   teams_message = {
