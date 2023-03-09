@@ -42,17 +42,11 @@ def lambda_handler(event, context):
   # Add url for where the documentation is
   alert_document = "https://example.com" #optional
   
- # Initialise color variable to None
-  colour = None
   # Set colour of the message to green if current state is 'UP'
-  if current_state == 'UP' and previous_state == 'DOWN':
-      colour = '00FF00'  # Green
-  # Set colour of the message to red if current state is 'DOWN'
-  elif current_state == 'DOWN' and previous_state == 'UP':
-      colour = 'FF0000'  # Red
-  # Set a default color if none of the conditions are met
-  else:
-      colour = '0000FF'  # Blue
+  colour = 'FF0000' # Red by default
+  if current_state == 'UP':
+      colour = '00FF00' # Green
+      print(colour)
       
   # Construct the Microsoft Teams message payload
   teams_message = {
@@ -125,8 +119,7 @@ def lambda_handler(event, context):
     }
   
   headers = {
-    "Content-Type": "application/json",
-    "pingdom": os.environ['API_GATEWAY_TOKEN']
+    "Content-Type": "application/json"
   }
   req = urllib.request.Request(
     teams_webhook_url, 
