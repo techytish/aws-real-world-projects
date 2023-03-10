@@ -97,6 +97,18 @@ def lambda_handler(event, context):
       ]
   }
   
+  # Iterate through aws hosts and assign the hostname to utilise the different regions
+  aws_api_endpoints = []
+  for hostname in list_of_hosts1:
+      aws_api_endpoint = f"https://{hostname}.{aws_api_domain}"
+      aws_api_endpoints.append(aws_api_endpoints)
+      
+  # Iterate through azure hosts and assign the hostname to utilise the different regions
+  azure_api_endpoints = []
+  for hostname in list_of_hosts2:
+      azure_api_endpoint = f"https://{hostname}.{azure_domain}"
+      azure_api_endpoints.append(azure_api_endpoints)
+  
   # Check if hostname in Pingdom alert exists in pingdom_hostnames.py
   # If it does, use the relevant webhook url to notify the correct Microsoft Teams channel
   # If it doesn't exist, we will get an error in the lambda logs
