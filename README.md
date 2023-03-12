@@ -19,7 +19,7 @@ The main technologies used:
 Please visit each branch for a service added:
 
 - Pingdom to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/pingdom-to-microsoft-teams
-- AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/aws-cloudwatch-alarms-to-microsoft-teams
+- AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/aws-cloudwatch-alarms-to-microsoft-teams
 - 
 
 ....
