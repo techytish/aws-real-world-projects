@@ -24,7 +24,7 @@ The project's file structure is as follows:
 ```python
 .
 ├── README.md
-├── lambda.py
+├── lambda_function.py
 ├── lambda_test.json
 ├── main.tf
 ├── outputs.tf
@@ -33,7 +33,7 @@ The project's file structure is as follows:
 ```
 
 - `README.md`: This file, providing an overview of the project and its components.
-- `lambda.py`: The Python code for the Lambda function that sends notifications to Microsoft Teams.
+- `lambda_function.py`: The Python code for the Lambda function that sends notifications to Microsoft Teams.
 - `lambda_test.json`: The JSON code for testing the lambda in the AWS console.
 - `main.tf`: The main Terraform file that declares all the resources and their configurations.
 - `outputs.tf`: The Terraform file that declares the outputs of the project, such as the SNS topic ARN.
