@@ -8,6 +8,13 @@ resource "aws_sns_topic" "cloudwatch_alarm_topic" {
   name = var.sns_topic_name
 }
 
+# Create an SNS topic subscription for CloudWatch alarms
+resource "aws_sns_topic_subscription" "teams_notifications_subscription" {
+  topic_arn = aws_sns_topic.cloudwatch_alarm_topic.arn
+  protocol  = "https"
+  endpoint  = var.teams_webhook_url
+}
+
 # Create a CloudWatch metric alarm for CPU utilization
 resource "aws_cloudwatch_metric_alarm" "cpu_utilization_alarm" {
   alarm_name          = var.alarm_name
@@ -102,17 +109,9 @@ locals {
   teams_lambda_zip_file = "sns_to_teams.zip"
 }
 
-# Define an archive file data source for the Lambda function zip file
-data "archive_file" "sns_to_teams" {
-  type        = "zip"
-  source_dir = "${path.module}/lambda"
-  output_path = "${path.module}/sns_to_teams.zip"
-}
-
 # Define an IAM policy document for the SNS topic policy
 data "aws_iam_policy_document" "cloudwatch_alarm_policy" {
  
-
 data "aws_iam_policy_document" "cloudwatch_alarm_policy" {
   statement {
     effect = "Allow"
