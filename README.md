@@ -6,19 +6,22 @@ Well this repository is dedicated to solving issues.
 
 The main technologies used:
 
-<img width="840" alt="image" src="https://user-images.githubusercontent.com/27959256/222963437-33f29638-da62-4781-8181-a19def37a469.png">
+<img width="852" alt="image" src="https://user-images.githubusercontent.com/27959256/224548534-0325af06-9a9a-425b-baaf-fc6d4e3c03cb.png">
 
 - AWS
+- Azure
+- Microsoft Teams
 - Python
 - Request Bin
 - Postman
-- Microsoft Teams
 
 ## Services
 Please visit each branch for a service added:
 
 - Pingdom to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/pingdom-to-microsoft-teams
-- AWS CloudWatch Alarms to Microsoft Teams: 
+- AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/blob/aws-cloudwatch-alarms-to-microsoft-teams
+- 
+
 ....
 
-More to come!
+:grin: More to come!
