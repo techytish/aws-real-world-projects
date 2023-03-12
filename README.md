@@ -23,18 +23,20 @@ The project's file structure is as follows:
 
 ```python
 .
+├── README.md
 ├── lambda.py
+├── lambda_test.json
 ├── main.tf
 ├── outputs.tf
-├── README.md
 └── variables.tf
 
 ```
 
+- `README.md`: This file, providing an overview of the project and its components.
 - `lambda.py`: The Python code for the Lambda function that sends notifications to Microsoft Teams.
+- `lambda_test.json`: The JSON code for testing the lambda in the AWS console.
 - `main.tf`: The main Terraform file that declares all the resources and their configurations.
 - `outputs.tf`: The Terraform file that declares the outputs of the project, such as the SNS topic ARN.
-- `README.md`: This file, providing an overview of the project and its components.
 - `variables.tf`: The Terraform file that declares the input variables used by the project, such as the AWS region and instance type.
 
 ## Technologies & Pre-Requisites
@@ -79,6 +81,7 @@ This is open-source and you may use my code for your implementation.
 
 Here is an example of the Microsoft Teams notification:
 
+<img width="859" alt="image" src="https://user-images.githubusercontent.com/27959256/224553058-18b126e4-c2a0-41ac-8cf4-8f0d79dc1e90.png">
 
 ## Conclusion
 
