@@ -74,9 +74,7 @@ To set up the project, follow these steps:
 
 This is open-source and you may use my code for your implementation.
 
-- Read Part 1/2 article here ➡️ 
-
-- Read Part 2/2 article here ➡️ 
+- Read the article here ➡️ https://medium.com/@techytish/creating-an-alert-notification-in-microsoft-teams-for-aws-cloudwatch-alarms-d21ffd28e90e
 
 🔥 If you are using any documentation please credit my repo/article as source.
 
