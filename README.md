@@ -1,25 +1,87 @@
-# Custom Microsoft Teams Webhooks
+# Microsoft Teams Notifications for CloudWatch Alarms
 
-Ever had a service where the webhook to notify a Microsoft Teams channel doesn't work?
+## Table of Contents
 
-Well this repository is dedicated to solving issues. 
+<!-- TOC start -->
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Technologies & Pre-Requisites](#technologies--pre-requisites)
+- [Setup Instructions](#setup-instructions)
+- [Implementation](#implementation)
+- [Conclusion](#conclusion)
+<!-- TOC end -->
 
-The main technologies used:
+## Overview
 
-<img width="840" alt="image" src="https://user-images.githubusercontent.com/27959256/222963437-33f29638-da62-4781-8181-a19def37a469.png">
+This project sets up an AWS CloudWatch alarm to monitor an EC2 instance's CPU usage and sends a notification to a Microsoft Teams channel when the CPU utilization exceeds a certain threshold. The notifications are sent via an AWS Lambda function written in Python 3.9 and using the AWS SNS service.
 
-- Python
-- Request Bin
-- Postman
-- AWS API Gateway
-- AWS Lambda
-- Microsoft Teams
+The project is implemented using Terraform, an infrastructure as code (IaC) tool, to provision all the necessary AWS resources, including the EC2 instance, CloudWatch alarm, SNS topic, and Lambda function. The project also includes instructions on how to create a webhook in Microsoft Teams to receive the notifications.
 
-## Services
-Please visit each branch for a service added:
+## Project Structure
 
-- Pingdom to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/pingdom-to-microsoft-teams
+The project's file structure is as follows:
 
-....
+```python
+.
+├── lambda.py
+├── main.tf
+├── outputs.tf
+├── README.md
+└── variables.tf
 
-More to come!
+```
+
+- `lambda.py`: The Python code for the Lambda function that sends notifications to Microsoft Teams.
+- `main.tf`: The main Terraform file that declares all the resources and their configurations.
+- `outputs.tf`: The Terraform file that declares the outputs of the project, such as the SNS topic ARN.
+- `README.md`: This file, providing an overview of the project and its components.
+- `variables.tf`: The Terraform file that declares the input variables used by the project, such as the AWS region and instance type.
+
+## Technologies & Pre-Requisites
+
+<img width="672" alt="image" src="https://user-images.githubusercontent.com/27959256/224549300-c0501a9d-b923-4cf9-a10a-dc29cc807995.png">
+
+Before getting started with this project, you will need to have the following:
+
+- An AWS account with appropriate permissions to create the necessary resources
+- Terraform installed on your local machine
+- Python 3.9 or later installed on your local machine
+- Basic knowledge of Python and AWS services
+
+Make sure to set up your AWS credentials with appropriate permissions to create the required resources. Additionally, make sure to have a basic understanding of Python and AWS services such as Lambda, SNS, and CloudWatch alarms.
+
+:exclamation: Note: The AWS CLI and Terraform should be installed and configured according to their respective documentation.
+
+## Setup Instructions
+
+To set up the project, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install Terraform on your local machine if you haven't already.
+3. Configure your AWS credentials on your local machine if you haven't already.
+4. Create a Microsoft Teams channel and a webhook to receive the notifications.
+5. Set the input variables in variables.tf to your desired values.
+6. Run terraform init to initialize the Terraform project.
+7. Run terraform apply to create the AWS resources.
+8. Copy the SNS topic ARN from the Terraform output and use it to create a CloudWatch alarm.
+9. Verify that the alarm triggers by generating high CPU usage on the EC2 instance.
+10. Check the Microsoft Teams channel for the notifications.
+
+## Implementation
+
+This is open-source and you may use my code for your implementation.
+
+- Read Part 1/2 article here ➡️ 
+
+- Read Part 2/2 article here ➡️ 
+
+🔥 If you are using any documentation please credit my repo/article as source.
+
+Here is an example of the Microsoft Teams notification:
+
+
+## Conclusion
+
+This project demonstrates how to set up a CloudWatch alarm to monitor an EC2 instance's CPU utilization and send notifications to a Microsoft Teams channel via an AWS Lambda function and SNS topic. By using Terraform to provision the resources, the project provides a scalable and repeatable way to set up the notification system.
+
+You can use this repository and setup any type of AWS CLoudWatch alarm.
