@@ -12,8 +12,8 @@ The main technologies used:
 - Azure
 - Microsoft Teams
 - Python
-- Request Bin
 - Postman
+- Request Bin
 
 ## Services
 Please visit each branch for a service added:
