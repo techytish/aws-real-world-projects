@@ -1,0 +1,39 @@
+{
+  "version": "0",
+  "id": "12345678-1234-1234-1234-123456789012",
+  "detail-type": "CloudWatch Alarm State Change",
+  "source": "aws.cloudwatch",
+  "account": "123456789012",
+  "time": "2023-03-01T12:00:00Z",
+  "region": "us-east-1",
+  "resources": [
+    "arn:aws:cloudwatch:us-east-1:123456789012:alarm:my-alarm"
+  ],
+  "detail": {
+    "alarmName": "CPU Utilization",
+    "alarmDescription": "The CPU utilization of the EC2 instance has exceeded 90% for the last 5 minutes.",
+    "awsAccountId": "123456789012",
+    "newStateValue": "ALARM",
+    "newStateReason": "Threshold Crossed: 1 datapoint [99.0 (28/02/23 12:45:00)] was greater than or equal to the threshold (90.0).",
+    "stateChangeTime": "2023-03-01T12:00:00.000+0000",
+    "region": "us-east-1",
+    "oldStateValue": "OK",
+    "trigger": {
+      "metricName": "CPUUtilization",
+      "namespace": "AWS/EC2",
+      "dimensions": [
+        {
+          "name": "InstanceId",
+          "value": "i-0123456789abcdef0"
+        }
+      ],
+      "period": 300,
+      "evaluationPeriods": 1,
+      "comparisonOperator": "GreaterThanOrEqualToThreshold",
+      "threshold": 90.0,
+      "datapointsToAlarm": 1,
+      "treatMissingData": "- TreatMissingData: missing",
+      "evaluateLowSampleCountPercentile": ""
+    }
+  }
+}
