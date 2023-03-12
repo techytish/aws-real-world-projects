@@ -16,30 +16,33 @@ resource "aws_sns_topic_subscription" "teams_notifications_subscription" {
 }
 
 # Create a CloudWatch metric alarm for CPU utilization
-resource "aws_cloudwatch_metric_alarm" "cpu_utilization_alarm" {
+resource "aws_cloudwatch_metric_alarm" "alarm" {
   alarm_name          = var.alarm_name
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods  = "2"
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/EC2"
-  period              = "120"
+  comparison_operator = var.cloudwatch_metric_operator
+  evaluation_periods  = var.cloudwatch_metric_evaluation_periods
+  metric_name         = var.cloudwatch_metric_name
+  namespace           = var.cloudwatch_metric_namespace
+  period              = var.cloudwatch_metric_period
   statistic           = "Average"
-  threshold           = "70"
-  alarm_description   = "This metric monitors ec2 cpu utilization"
-  alarm_actions       = [aws_sns_topic.cloudwatch_alarm_topic.arn]
-  dimensions = {
-    InstanceId = var.instance_id
+  threshold           = var.cloudwatch_metric_threshold
+  alarm_description   = var.cloudwatch_metric_description
+  alarm_actions       = [aws_sns_topic.sns_topic.arn]
+  dimensions          = {
+    "${var.cloudwatch_metric_dimension_name}" = var.cloudwatch_metric_dimension_value
   }
 }
 
 # Create a Lambda function to send notifications to Microsoft Teams
 resource "aws_lambda_function" "sns_to_teams" {
-  filename      = "sns_to_teams.zip"
+  filename      = "lambda_function.zip"
   function_name = var.lambda_name
   role          = aws_iam_role.lambda_execution.arn
-  handler       = "lambda_function.lambda_handler"
+  handler       = var.lambda_handler_name
   runtime       = "python3.9"
   timeout       = "60"
+  runtime       = var.lambda_runtime
+  timeout       = var.lambda_timeout
+  memory_size   = var.lambda_memory_size
 
   # Set environment variables for the Lambda function
   environment {
@@ -110,8 +113,6 @@ locals {
 }
 
 # Define an IAM policy document for the SNS topic policy
-data "aws_iam_policy_document" "cloudwatch_alarm_policy" {
- 
 data "aws_iam_policy_document" "cloudwatch_alarm_policy" {
   statement {
     effect = "Allow"
