@@ -26,6 +26,10 @@ variable "lambda_memory_size" {
   default = 128
 }
 
+variable "cloudwatch_metric_description" {
+  default = "This metric monitors EC2 CPU utilization"
+}
+
 variable "cloudwatch_metric_namespace" {
   default = "AWS/EC2"
 }
