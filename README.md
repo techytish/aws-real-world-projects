@@ -49,6 +49,7 @@ Before getting started with this project, you will need to have the following:
 - Terraform installed on your local machine
 - Python 3.9 or later installed on your local machine
 - Basic knowledge of Python and AWS services
+- Microsoft Teams account with permissions to create a team or channel for the incoming webhook.
 
 Make sure to set up your AWS credentials with appropriate permissions to create the required resources. Additionally, make sure to have a basic understanding of Python and AWS services such as Lambda, SNS, and CloudWatch alarms.
 
