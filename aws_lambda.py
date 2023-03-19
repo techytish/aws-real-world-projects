@@ -1,6 +1,11 @@
 import boto3
+import os
 from datetime import datetime, timedelta
 import xml.etree.ElementTree as ET
+
+# Get the environment variables for AWS access
+aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 # This function uses the AWS Organisations API to list all accounts in your AWS organisation.
 def list_accounts():
