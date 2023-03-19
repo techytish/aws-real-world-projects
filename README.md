@@ -25,10 +25,16 @@ This project automates checking for deprecated runtime versions in AWS Lambda fu
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/TechyTish/aws-real-world-projects/tree/aws-lambda-deprecation-checker.git
+git clone https://github.com/TechyTish/aws-real-world-projects.git
 ```
 
-2. Create a virtual environment:
+2. Navigate to the `aws-lambda-deprecation-checker` directory:
+
+```bash
+cd aws-real-world-projects/aws-lambda-deprecation-checker
+```
+
+3. Create a virtual environment:
 
 ```bash
 python -m venv env
@@ -36,18 +42,18 @@ source env/bin/activate  # for Linux/Mac
 env\Scripts\activate  # for Windows
 ```
 
-3. Install the required packages:
+4. Install the required packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Set up the AWS CLI on your local machine:
+5. Set up the AWS CLI on your local machine:
 
 - Follow the instructions in the AWS documentation to install and configure the AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
 - Make sure that you have permissions to access the Lambda functions in your AWS account.
 
-5. Create an AWS IAM user with programmatic access and the necessary permissions:
+6. Create an AWS IAM user with programmatic access and the necessary permissions:
 
 - In the AWS Management Console, go to "Services" > "IAM".
 - Click "Users" > "Add User".
@@ -55,21 +61,21 @@ pip install -r requirements.txt
 - Attach the "AWSLambdaReadOnlyAccess" and "CloudWatchLogsReadOnlyAccess" policies to the user.
 - Click "Create User" and note down the access key ID and secret access key.
 
-6. Set up the Azure DevOps pipeline:
+7. Set up the Azure DevOps pipeline:
 
 - In your Azure DevOps project, go to "Pipelines" > "Pipelines".
 - Click "New Pipeline" and select the repository you cloned earlier.
-- Choose "Existing Azure Pipelines YAML file" and select the azure-pipelines.yml file in the root of your repository.
+- Choose "Existing Azure Pipelines YAML file" and select the `aws_lambda.yml` file in the root of your repository.
 - Click "Continue" and then "Save and run".
 
-7. Connect your AWS account to the pipeline:
+8. Connect your AWS account to the pipeline:
 
 - In your Azure DevOps project, go to "Pipelines" > "Library".
 - Click on "New Variable Group" and give it a name, like "AWS Credentials".
 - In the "Variables" tab, add the following variables:
   - `AWS_ACCESS_KEY_ID`: your AWS access key ID
   - `AWS_SECRET_ACCESS_KEY`: your AWS secret access key
-  - `AWS_DEFAULT_REGION`: the AWS region you want to use, like "us-east-1"
+  - `AWS_DEFAULT_REGION`: the default AWS region you want to use, like "us-east-1"
 - Click "Save" to create the variable group.
 - In your pipeline YAML file, add a variables section at the top, like this:
 ```yaml
