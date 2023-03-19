@@ -1,27 +1,89 @@
-# Custom Microsoft Teams Webhooks
+# AWS Lambda Deprecation Checker 🚀
 
-Ever had a service where the webhook to notify a Microsoft Teams channel doesn't work?
+## Table of Contents
 
-Well this repository is dedicated to solving issues. 
+<!-- TOC start -->
+  * [Overview](#overview)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [Contributing](#contributing)
+<!-- TOC end -->
 
-The main technologies used:
+## Overview
 
-<img width="852" alt="image" src="https://user-images.githubusercontent.com/27959256/224548534-0325af06-9a9a-425b-baaf-fc6d4e3c03cb.png">
+This project automates checking for deprecated runtime versions in AWS Lambda functions using Azure DevOps pipelines. 🔍
 
-- AWS
-- Azure
-- Microsoft Teams
-- Python
-- Postman
-- Request Bin
+📌 This project uses Python scripts and AWS CLI to search through AWS accounts and list all Lambda functions, as well as checking for deprecated runtime versions.
 
-## Services
-Please visit each branch for a service added:
+## Prerequisites
+- An AWS account with Lambda functions
+- An Azure DevOps account with pipelines
+- Git installed on your local machine
+- Python 3.x installed on your local machine
 
-- Pingdom to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/pingdom-to-microsoft-teams
-- AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/aws-cloudwatch-alarms-to-microsoft-teams
-- 
+## Installation
+1. Clone the repository:
 
-....
+```bash
+git clone https://github.com/TechyTish/aws-real-world-projects/tree/aws-lambda-deprecation-checker.git
+```
 
-:grin: More to come!
+2. Create a virtual environment:
+
+```bash
+python -m venv env
+source env/bin/activate  # for Linux/Mac
+env\Scripts\activate  # for Windows
+```
+
+3. Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up the AWS CLI on your local machine:
+
+- Follow the instructions in the AWS documentation to install and configure the AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+- Make sure that you have permissions to access the Lambda functions in your AWS account.
+
+5. Create an AWS IAM user with programmatic access and the necessary permissions:
+
+- In the AWS Management Console, go to "Services" > "IAM".
+- Click "Users" > "Add User".
+- Give the user a name and select "Programmatic access" as the access type.
+- Attach the "AWSLambdaReadOnlyAccess" and "CloudWatchLogsReadOnlyAccess" policies to the user.
+- Click "Create User" and note down the access key ID and secret access key.
+
+6. Set up the Azure DevOps pipeline:
+
+- In your Azure DevOps project, go to "Pipelines" > "Pipelines".
+- Click "New Pipeline" and select the repository you cloned earlier.
+- Choose "Existing Azure Pipelines YAML file" and select the azure-pipelines.yml file in the root of your repository.
+- Click "Continue" and then "Save and run".
+
+7. Connect your AWS account to the pipeline:
+
+- In your Azure DevOps project, go to "Pipelines" > "Library".
+- Click on "New Variable Group" and give it a name, like "AWS Credentials".
+- In the "Variables" tab, add the following variables:
+  - `AWS_ACCESS_KEY_ID`: your AWS access key ID
+  - `AWS_SECRET_ACCESS_KEY`: your AWS secret access key
+  - `AWS_DEFAULT_REGION`: the AWS region you want to use, like "us-east-1"
+- Click "Save" to create the variable group.
+- In your pipeline YAML file, add a variables section at the top, like this:
+```yaml
+variables:
+  - group: AWS Credentials
+```
+
+8. Run the pipeline:
+- Click "Save and run" to start the pipeline.
+- The pipeline will run the Python scripts to get information about the Lambda functions in your AWS account.
+- The results will be published as test results and pipeline artifacts.
+- You can view the results in the "Tests" and "Artifacts" tabs in the pipeline summary.
+
+# Contributing
+If you have any suggestions or would like to contribute to this project, please feel free to open an issue or pull request.
+
+👨‍💻 Let's work together to improve AWS Lambda function optimisation and automation!
