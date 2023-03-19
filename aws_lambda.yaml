@@ -1,0 +1,45 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- script: |
+    python3 -m venv env
+    source env/bin/activate
+    pip3 install -r requirements.txt
+  displayName: 'Set up Python environment'
+
+- script: |
+    python3 aws_lambda.py
+  displayName: 'Run AWS Lambda script'
+  
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results: Lambda Invoked'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_functions_list.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    tabTitle: 'Lambda Functions List'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results: Lambda Invoked'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_invoked_results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    tabTitle: 'Lambda Invoked Results'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results: Lambda Deprecated'
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_deprecated_results.xml'
+    mergeTestResults: true
+    failTaskOnFailedTests: true
+    tabTitle: 'Lambda Deprecated Runtime'
+
