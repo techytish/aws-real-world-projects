@@ -7,7 +7,8 @@ The main technologies used:
 <img width="852" alt="image" src="https://user-images.githubusercontent.com/27959256/224548534-0325af06-9a9a-425b-baaf-fc6d4e3c03cb.png">
 
 - AWS
-- Azure
+- Azure DevOps
+- Microsoft Teams
 - Python
 - Postman
 - Request Bin
