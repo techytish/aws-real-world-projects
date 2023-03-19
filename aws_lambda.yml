@@ -5,6 +5,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+# Use the variable group created in Azure DevOps
+variables:
+  - group: AWS Credentials
+
 steps:
   # Set up the Python environment by creating a virtual environment and installing required packages
   - script: |
