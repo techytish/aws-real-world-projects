@@ -91,7 +91,7 @@ variables:
 
 # Contributing
 
-Check out the article for implementation here :arrow_right:: https://medium.com/@techytish/automating-aws-lambda-deprecation-checks-with-azure-devops-f582a6ed5409 
+Check out the article for implementation here :arrow_right:: https://medium.com/@techytish/automating-aws-lambda-deprecation-checks-with-azure-devops-f98dfcb1c9b6
 
 If you have any suggestions or would like to contribute to this project, please feel free to open an issue or pull request.
 
