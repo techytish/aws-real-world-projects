@@ -1,45 +1,48 @@
 trigger:
-- main
+  - main
 
+# Set up the pipeline's build agent to use the latest Ubuntu image
 pool:
   vmImage: ubuntu-latest
 
 steps:
+  # Set up the Python environment by creating a virtual environment and installing required packages
+  - script: |
+      python3 -m venv env
+      source env/bin/activate
+      pip3 install -r requirements.txt
+    displayName: 'Set up Python environment'
 
-- script: |
-    python3 -m venv env
-    source env/bin/activate
-    pip3 install -r requirements.txt
-  displayName: 'Set up Python environment'
+  # Run the AWS Lambda script to generate test results
+  - script: |
+      python3 aws_lambda.py
+    displayName: 'Run AWS Lambda script'
+    
+  # Publish the Lambda Invoked test results to Azure DevOps
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results: Lambda Invoked'
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_invoked_results.xml'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      testRunTitle: 'Lambda Invoked Results'
+      publishRunAttachments: true
 
-- script: |
-    python3 aws_lambda.py
-  displayName: 'Run AWS Lambda script'
-  
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results: Lambda Invoked'
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_functions_list.xml'
-    mergeTestResults: true
-    failTaskOnFailedTests: true
-    tabTitle: 'Lambda Functions List'
+  # Publish the Lambda Deprecated Runtime test results to Azure DevOps
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results: Lambda Deprecated'
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_deprecated_results.xml'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      testRunTitle: 'Lambda Deprecated Runtime'
+      publishRunAttachments: true
 
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results: Lambda Invoked'
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_invoked_results.xml'
-    mergeTestResults: true
-    failTaskOnFailedTests: true
-    tabTitle: 'Lambda Invoked Results'
-
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results: Lambda Deprecated'
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/lambda_deprecated_results.xml'
-    mergeTestResults: true
-    failTaskOnFailedTests: true
-    tabTitle: 'Lambda Deprecated Runtime'
-
+  # Publish the HTML reports to Azure DevOps as a pipeline artifact
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Pipeline Artifact: HTML Reports'
+    inputs:
+      artifactName: 'html_reports'
+      targetPath: '$(System.DefaultWorkingDirectory)/reports'
