@@ -83,13 +83,16 @@ variables:
   - group: AWS Credentials
 ```
 
-8. Run the pipeline:
+9. Run the pipeline:
 - Click "Save and run" to start the pipeline.
 - The pipeline will run the Python scripts to get information about the Lambda functions in your AWS account.
 - The results will be published as test results and pipeline artifacts.
 - You can view the results in the "Tests" and "Artifacts" tabs in the pipeline summary.
 
 # Contributing
+
+Check out the article for implementation here :arrow_right:: https://medium.com/@techytish/automating-aws-lambda-deprecation-checks-with-azure-devops-f582a6ed5409 
+
 If you have any suggestions or would like to contribute to this project, please feel free to open an issue or pull request.
 
 👨‍💻 Let's work together to improve AWS Lambda function optimisation and automation!
