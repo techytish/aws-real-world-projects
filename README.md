@@ -1,8 +1,6 @@
-# Custom Microsoft Teams Webhooks
+# AWS Real World Projects
 
-Ever had a service where the webhook to notify a Microsoft Teams channel doesn't work?
-
-Well this repository is dedicated to solving issues. 
+This repository is dedicated to solving real world issues leveraging AWS technologies. 
 
 The main technologies used:
 
@@ -10,7 +8,6 @@ The main technologies used:
 
 - AWS
 - Azure
-- Microsoft Teams
 - Python
 - Postman
 - Request Bin
@@ -18,9 +15,9 @@ The main technologies used:
 ## Services
 Please visit each branch for a service added:
 
-- Pingdom to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/pingdom-to-microsoft-teams
-- AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/custom-microsoft-teams-incoming-webhooks/tree/aws-cloudwatch-alarms-to-microsoft-teams
-- 
+1. Pingdom to Microsoft Teams: https://github.com/TechyTish/aws-real-world-projects/tree/pingdom-to-microsoft-teams
+2. AWS CloudWatch Alarms to Microsoft Teams: https://github.com/TechyTish/aws-real-world-projects/tree/aws-cloudwatch-alarms-to-microsoft-teams
+3. AWS Lambda Deprecation Checker: https://github.com/TechyTish/aws-real-world-projects/tree/aws-lambda-deprecation-checker
 
 ....
 
